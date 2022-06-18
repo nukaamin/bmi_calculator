@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'input.dart';
+import 'input_page.dart';
 
 void main() {
   runApp(const MyApp());

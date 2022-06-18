@@ -33,11 +33,15 @@ const kResultTextStyle = TextStyle(
 );
 
 class ReusableCard extends StatelessWidget {
-  ReusableCard({required this.colour, this.cardChild, this.onPress});
 
+  // data members
   final Color colour;
   final Widget? cardChild;
   final Function()? onPress;
+
+  // constructor
+  // ignore: use_key_in_widget_constructors
+  const ReusableCard({required this.colour, this.cardChild, this.onPress,});
 
   @override
   Widget build(BuildContext context) {
@@ -57,10 +61,14 @@ class ReusableCard extends StatelessWidget {
 
 // CUSTOM REUSABLE WIDGET
 class BottomButton extends StatelessWidget {
-  BottomButton({required this.onTap, required this.buttonTitle});
-
+  
+  // field
   final Function()? onTap;
   final String buttonTitle;
+
+  //  constructor
+  BottomButton({required this.onTap, required this.buttonTitle});
+
 
   @override
   Widget build(BuildContext context) {
@@ -91,15 +99,18 @@ const kBodyTextStyle = TextStyle(fontSize: 20.0, color: Colors.green, fontWeight
 
 
 class ResultsPage extends StatelessWidget {
-  ResultsPage(
-      {required this.interpretation,
-      required this.bmiResult,
-      required this.resultText});
 
+  // field
   final String bmiResult;
   final String resultText;
   final String interpretation;
 
+  // constructor
+  ResultsPage(
+      {required this.interpretation,
+      required this.bmiResult,
+      required this.resultText});
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

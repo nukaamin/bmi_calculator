@@ -1,15 +1,17 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'enum.dart';
-import 'results.dart';
+import 'enum_gander.dart';
+import 'results_calculate.dart';
 
 class IconContent extends StatelessWidget {
-  IconContent({required this.icon, required this.label});
-
+  // field
   final IconData icon;
   final String label;
+
+  // constructor
+  IconContent({required this.icon, required this.label});
+
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class IconContent extends StatelessWidget {
           size: 80.0,
           color: Colors.white,
         ),
-        SizedBox(
+        const SizedBox(
           height: 15.0,
         ),
         Text(
@@ -34,27 +36,32 @@ class IconContent extends StatelessWidget {
 }
 
 class RoundIconButton extends StatelessWidget {
-  RoundIconButton({required this.icon, required this.onPressed});
-
+  // data members
   final IconData icon;
   final Function()? onPressed;
 
+  // constructor
+  RoundIconButton({required this.icon, required this.onPressed});
+  
+  
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
       elevation: 1.0,
-      child: Icon(icon),
       onPressed: onPressed,
-      constraints: BoxConstraints.tightFor(
+      constraints: const BoxConstraints.tightFor(
         width: 56.0,
         height: 56.0,
       ),
-      shape: CircleBorder(),
+      shape: const CircleBorder(),
       fillColor: Colors.red,
+      child: Icon(icon),
     );
   }
 }
 
+// StatefulWidget = tidak bisa mengubah data
+// StatelessWidget = bisa merubah data
 
 class InputPage extends StatefulWidget {
   @override
@@ -62,18 +69,22 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+
+  // data members
   Gender? selectedGender;
   int height = 180;
   int weight = 60;
   int age = 20;
-
   double _bmi = 0.0;
 
+  
+  // method calculateBMI
   String calculateBMI() {
     _bmi = weight / pow(height / 100, 2);
     return _bmi.toStringAsFixed(1);
   }
 
+  // method getResult
   String getResult() {
     if (_bmi >= 25) {
       return 'Overweight';
@@ -84,6 +95,7 @@ class _InputPageState extends State<InputPage> {
     }
   }
 
+  // method getInterpretation
   String getInterpretation() {
     if (_bmi >= 25) {
       return 'You have a higher than normal body weight. Try to exercise more.';
@@ -99,7 +111,7 @@ class _InputPageState extends State<InputPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF111328),
-          title: Text(
+          title: const Text(
             "BMI CALCULATOR",
             style: TextStyle(
                 color: Colors.white,
@@ -154,7 +166,7 @@ class _InputPageState extends State<InputPage> {
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
+                  const Text(
                     'HEIGHT',
                     style: kLabelTextStyle,
                   ),
@@ -167,7 +179,7 @@ class _InputPageState extends State<InputPage> {
                         height.toString(),
                         style: kNumberTextStyle,
                       ),
-                      Text(
+                      const Text(
                         'cm',
                         style: kLabelTextStyle,
                       )
@@ -208,7 +220,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(
+                        const Text(
                           'WEIGHT',
                           style: kLabelTextStyle,
                         ),
@@ -226,7 +238,7 @@ class _InputPageState extends State<InputPage> {
                                     weight--;
                                   });
                                 }),
-                            SizedBox(
+                            const SizedBox(
                               width: 10.0,
                             ),
                             RoundIconButton(
@@ -249,7 +261,7 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(
+                        const Text(
                           'AGE',
                           style: kLabelTextStyle,
                         ),
@@ -270,7 +282,7 @@ class _InputPageState extends State<InputPage> {
                                 );
                               },
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10.0,
                             ),
                             RoundIconButton(
